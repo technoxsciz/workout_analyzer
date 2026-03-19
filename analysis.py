@@ -1,9 +1,15 @@
 import pandas as pd
 from sqlalchemy import create_engine
 import matplotlib.pyplot as plt
+from dotenv import load_dotenv
+import os
+
+# Load environment variables
+load_dotenv()
+password = os.getenv("DB_PASSWORD")
 
 # Connect to Postgres
-engine = create_engine("postgresql://postgres:192315@localhost:5432/workout_analyzer")
+engine = create_engine(f"postgresql://postgres:{password}@localhost:5432/workout_analyzer")
 
 # Pull entire dataset into a DataFrame
 df = pd.read_sql("SELECT * FROM exercises", engine)

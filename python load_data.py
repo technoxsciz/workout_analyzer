@@ -1,8 +1,14 @@
 import pandas as pd
 from sqlalchemy import create_engine
+from dotenv import load_dotenv
+import os
 
-# Update with your Postgres password
-engine = create_engine("postgresql://postgres:192315@localhost:5432/workout_analyzer")
+# Load environment variables
+load_dotenv()
+password = os.getenv("DB_PASSWORD")
+
+# Connect to Postgres
+engine = create_engine(f"postgresql://postgres:{password}@localhost:5432/workout_analyzer")
 
 # Load CSV — update the path to where your file is
 df = pd.read_csv("gym_exercise_dataset.csv")
