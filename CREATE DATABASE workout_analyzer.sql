@@ -1,1 +1,0 @@
-CREATE DATABASE workout_analyzer
